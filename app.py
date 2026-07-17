@@ -45,40 +45,156 @@ interface = gr.Interface(
     - **Email:** kashyaprohit03456@gmail.com
     """,
 
-    theme=gr.themes.Soft(
-        primary_hue="blue",
-        secondary_hue="cyan",
-        neutral_hue="slate",
-    ),
+  theme=gr.themes.Base(
+    primary_hue="emerald",
+    secondary_hue="teal",
+    neutral_hue="slate",
+    radius_size="lg",
+    font=[gr.themes.GoogleFont("Poppins"), "sans-serif"],
+),
 
-    css="""
-    .gradio-container{
-        background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80');
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-    }
+css="""
+/* ===========================
+   Background
+=========================== */
 
-    .gradio-container::before{
-        content:"";
-        position:fixed;
-        inset:0;
-        background:rgba(255,255,255,0.82);
-        z-index:-1;
-    }
+body{
+    background:
+    radial-gradient(circle at top left,#0f766e 0%,transparent 35%),
+    radial-gradient(circle at bottom right,#14532d 0%,transparent 35%),
+    linear-gradient(135deg,#081c24,#0b1726,#111827);
+    overflow-x:hidden;
+}
 
-    .block{
-        border-radius:18px !important;
-        box-shadow:0 8px 25px rgba(0,0,0,0.15);
-    }
+/* Floating animated blobs */
 
-    h1{
-        text-align:center;
-        color:#0B5ED7;
-        font-weight:800;
-    }
-    """,
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:rgba(16,185,129,.18);
+    filter:blur(90px);
+    top:-150px;
+    left:-120px;
+    animation:float1 14s ease-in-out infinite;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    background:rgba(20,184,166,.18);
+    filter:blur(90px);
+    right:-120px;
+    bottom:-120px;
+    animation:float2 18s ease-in-out infinite;
+}
+
+@keyframes float1{
+0%{transform:translateY(0);}
+50%{transform:translateY(40px);}
+100%{transform:translateY(0);}
+}
+
+@keyframes float2{
+0%{transform:translateY(0);}
+50%{transform:translateY(-40px);}
+100%{transform:translateY(0);}
+}
+
+/* ===========================
+   Main Container
+=========================== */
+
+.gradio-container{
+    max-width:900px !important;
+    margin:auto;
+    padding-top:30px;
+}
+
+/* Glass Card */
+
+.block{
+    background:rgba(255,255,255,0.08)!important;
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:22px!important;
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.35),
+        inset 0 0 0 1px rgba(255,255,255,.05);
+    transition:.35s;
+}
+
+.block:hover{
+    transform:translateY(-3px);
+    box-shadow:0 20px 40px rgba(0,0,0,.45);
+}
+
+/* ===========================
+   Title
+=========================== */
+
+h1{
+    text-align:center;
+    color:white!important;
+    font-size:40px!important;
+    font-weight:800!important;
+    letter-spacing:.5px;
+}
+
+h2,h3,p,label{
+    color:#e5e7eb!important;
+}
+
+/* ===========================
+   Inputs
+=========================== */
+
+input{
+    background:rgba(255,255,255,.08)!important;
+    border:1px solid rgba(255,255,255,.15)!important;
+    color:white!important;
+    border-radius:12px!important;
+}
+
+input:focus{
+    border:1px solid #34d399!important;
+    box-shadow:0 0 15px rgba(52,211,153,.4)!important;
+}
+
+/* ===========================
+   Button
+=========================== */
+
+button{
+    background:linear-gradient(90deg,#10b981,#14b8a6)!important;
+    color:white!important;
+    font-weight:700!important;
+    border:none!important;
+    border-radius:14px!important;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.03);
+    box-shadow:0 10px 25px rgba(16,185,129,.35);
+}
+
+/* ===========================
+   Output Box
+=========================== */
+
+.output-text{
+    background:rgba(255,255,255,.08)!important;
+    border-radius:15px!important;
+}
+"""
 )
+
 # ------------------------------------------
 
 if __name__ == "__main__":
