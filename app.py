@@ -31,8 +31,53 @@ interface = gr.Interface(
         gr.Number(label="Age (Years)")
     ],
     outputs=gr.Text(label="Assessment Result"),
-    title="Diabetes Prediction System",
-    description="Enter the medical metrics to predict diabetes risk using a Decision Tree Machine Learning model."
+
+    title="🩺 Diabetes Prediction System",
+
+    description="""
+    ## Diabetes Prediction using Decision Tree Machine Learning
+
+    Enter the patient's medical metrics to predict diabetes risk.
+
+    **Developer Details**
+    - **Name:** Rohit
+    - **Contact:** 8708261681
+    - **Email:** kashyaprohit03456@gmail.com
+    """,
+
+    theme=gr.themes.Soft(
+        primary_hue="blue",
+        secondary_hue="cyan",
+        neutral_hue="slate",
+    ),
+
+    css="""
+    .gradio-container{
+        background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+
+    .gradio-container::before{
+        content:"";
+        position:fixed;
+        inset:0;
+        background:rgba(255,255,255,0.82);
+        z-index:-1;
+    }
+
+    .block{
+        border-radius:18px !important;
+        box-shadow:0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    h1{
+        text-align:center;
+        color:#0B5ED7;
+        font-weight:800;
+    }
+    """,
 )
 # ------------------------------------------
 
